@@ -24,11 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--7#yy0%ee(s$qcxk$**w&j1drdo$_=6rj8_obr&na8#u@ov+53'
 
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') + [
     '.ngrok-free.dev',
     '.ngrok-free.app',
     'removably-untickled-wilfred.ngrok-free.dev',
